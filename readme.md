@@ -18,6 +18,7 @@ This project supports **Student & Teacher authentication**, **homework upload**,
 ## 🚀 Deployment Link 
 > ✅ **Live Demo:** https://schoolproject1108.fwh.is/  
 > 🗄️ **Database:** Hosted on InfinityFree (MySQL Remote DB)
+> 🗄️ **Database:** https://php-myadmin.net/db_structure.php?db=if0_40559490_school_portal
 
 ---
 ## 🚀 Features
@@ -54,6 +55,10 @@ This project supports **Student & Teacher authentication**, **homework upload**,
 - Admissions form stored in DB
 - Fully responsive UI for mobile + desktop
 
+---
+## 🎥 Project Demo
+
+[![Project Demo Video](https://youtu.be/khv9MA3rJ50)
 ---
 
 ## 🛠️ **Tech Stack**
