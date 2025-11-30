@@ -1,0 +1,317 @@
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+#school{
+  color: #007BFF;
+}
+body {
+    font-family: sans-serif;
+     background-color: #f9fafb;
+}
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 10px;
+}
+.name-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-bar i {
+    font-size: 24px;
+    color: #007BFF;
+}
+
+.items {
+    display: flex;
+    gap: 25px;
+}
+
+.items a {
+    text-decoration: none;
+    color: #393636;
+    font-size: 16px;
+}
+
+.items a:hover {
+    color: #1080f8;
+}
+
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 100px;
+}
+
+.form-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.logo {
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-card h2 {
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.form-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.form-card p a {
+  color: #2563eb;
+  text-decoration: none;
+}
+.login-form {
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 80px;
+}
+.forgot {
+  position: absolute;
+  top: 50%;
+  right: 36px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #2563eb;
+}
+.remember-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #e5e7eb;
+}
+
+.divider span {
+  padding: 0 10px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Social Button */
+.social-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: white;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.social-btn.google i {
+  color: #ea4335;
+}
+
+@media (max-width: 600px) {
+  .nav-bar, .items, .signin, .footer-container, .social-media {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .content h2, .bookfleet h1, .aboutcar h1 {
+    font-size: clamp(20px, 5vw, 32px);
+  }
+
+  .content p, .aboutcar p, .bookfleet p {
+    width: 90%;
+    font-size: clamp(14px, 4vw, 18px);
+    text-align: center;
+  }
+
+  .stats, .features, .features2, .cards, .values, .car-selection, .car-details ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .selected-car-card, .pickup-dropoff-container, .option-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .car-img img, .car-selection img {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .contact-form, .faq-container, .support-cards {
+    gap: 15px;
+  }
+
+  .contact-form-container, .faq-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+ 
+  
+ .items {
+        display: none;
+        flex-direction: column;
+        background: #f5f5f5;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 220px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px 0;
+         flex-direction: column;
+        width: 250px;
+    }
+.nav-bar {
+    flex-direction: row;
+    height: auto;
+    padding: 10px 20px;
+  }
+.items a {
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+        width: 100%;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+    }
+ .hamburger {
+        display: block;
+    }
+
+    .items.active {
+        display: flex;
+    }
+ 
+
+  .hero {
+    height: auto;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  #p, #a {
+    font-size: 36px;
+  }
+
+  .search-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .field {
+    width: 100%;
+  }
+
+  .bookfleet {
+    height: auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .bookfleet h2 {
+    font-size: 24px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .card2, .card1 {
+    align-items: flex-start;
+  }
+
+  .features,
+  .features2 {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

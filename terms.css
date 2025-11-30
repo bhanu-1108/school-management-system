@@ -1,0 +1,66 @@
+/* ======================
+   Terms of Service Page
+====================== */
+
+
+.name-logo h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+#car {
+    color: #36a7f6;
+}
+
+/* Hero Section */
+.terms-hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: #e9f4ff;
+    border-bottom: 3px solid #36a7f6;
+}
+
+.terms-hero h1 {
+    font-size: 36px;
+    color: #007BFF;
+}
+
+.terms-hero p {
+    font-size: 17px;
+    color: #444;
+}
+
+/* Content */
+.terms-content {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.terms-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.terms-box h2 {
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.terms-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.terms-box ul {
+    margin: 10px 0 0 20px;
+}
+
+.terms-box ul li {
+    margin-bottom: 5px;
+    font-size: 15px;
+}

@@ -1,0 +1,194 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Terms of Service - Central Academy</title>
+<link rel="stylesheet" href="terms.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+  <header>
+        <div class="nav-bar" id="nav-items">
+            <div class="name-logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>Central<span id="car">Academy</span></h2>
+            </div>
+          <div class="items">
+    <a href="index.php">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactus.php">Contact Us</a>
+
+    <div class="signin" id="user-info">
+        <?php if ($isLoggedIn): ?>
+            <span style="font-weight:600; margin-right:10px;">
+                <?php echo htmlspecialchars($username); ?> (<?php echo htmlspecialchars($position); ?>)
+            </span>
+            <form method="post" action="logout.php" style="display:inline;">
+                <button type="submit" style="padding:6px 10px; border:none; background:#36a7f6; color:white; border-radius:6px; cursor:pointer;">
+                    Logout
+                </button>
+            </form>
+        <?php else: ?>
+            <a id="a1" href="signin.php">Sign In</a>
+            <a href="register.php" id="reg">Register</a>
+        <?php endif; ?>
+    </div>
+</div>
+
+</header>
+
+<section class="terms-hero">
+    <h1>Terms of Service</h1>
+    <p>Please read the following terms carefully before using our website and services.</p>
+</section>
+
+<section class="terms-content">
+
+    <div class="terms-box">
+        <h2>1. Introduction</h2>
+        <p>
+            By accessing and using the Central Academy website, you agree to comply with and be bound by these Terms of Service.
+            These terms apply to all visitors, students, parents, and staff members accessing the platform.
+        </p>
+    </div>
+
+    <div class="terms-box">
+        <h2>2. Use of Website</h2>
+        <p>
+            You agree to use the website for lawful purposes only. You must not:
+        </p>
+        <ul>
+            <li>Use the website to upload harmful or malicious content.</li>
+            <li>Attempt to access restricted areas without permission.</li>
+            <li>Disrupt the functioning of the platform.</li>
+        </ul>
+    </div>
+
+    <div class="terms-box">
+        <h2>3. Student & Parent Responsibilities</h2>
+        <p>
+            When registering or submitting student information, you agree that all data provided is accurate and true. 
+            Providing false information may result in restricted access.
+        </p>
+    </div>
+
+    <div class="terms-box">
+        <h2>4. Data Collection</h2>
+        <p>
+            We collect personal information such as name, email, contact number, and class details for academic purposes only. 
+            Your data is stored securely and will not be shared with any third parties.
+        </p>
+    </div>
+
+    <div class="terms-box">
+        <h2>5. Homework & Academic Portal Use</h2>
+        <p>
+            Students and teachers must use the homework portal responsibly.  
+            Teachers must upload academic-related content only.  
+            Students are required to check and complete homework regularly.
+        </p>
+    </div>
+
+    <div class="terms-box">
+        <h2>6. Admission Form Usage</h2>
+        <p>
+            Admission forms submitted online must contain correct and verifiable information.
+            Central Academy reserves the right to contact parents for verification.
+        </p>
+    </div>
+
+    <div class="terms-box">
+        <h2>7. Intellectual Property</h2>
+        <p>
+            All content, including text, images, icons, and layout, belongs to Central Academy and cannot be copied without permission.
+        </p>
+    </div>
+
+    <div class="terms-box">
+        <h2>8. Policy Changes</h2>
+        <p>
+            The school may update its policies anytime. Users will be notified on this page when changes occur.
+        </p>
+    </div>
+
+    <div class="terms-box">
+        <h2>9. Contact Us</h2>
+        <p>
+            If you have questions regarding our Terms of Service, contact us:
+        </p>
+        <p><i class="fa-solid fa-envelope"></i> support@centralacademy.com</p>
+        <p><i class="fa-solid fa-phone"></i> +91 7300368554</p>
+    </div>
+
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="card1">
+      <div class="card-logo">
+                 <i class="fa-solid fa-graduation-cap"></i>
+                <h2>Central<span style="color: #36a7f6;">Academy</span></h2>
+            </div>
+          <div class="pcar">
+            <p>A place where knowledge and character grow together</p>
+          </div>
+          <div class="social-media">
+            <a href="#3"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#3"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#3"> <i class="fa-brands fa-instagram"></i></a>
+            <a href="#3"> <i class="fa-brands fa-linkedin-in"></i></a>
+            <a href=""></a>
+            
+           
+           
+            
+          </div>
+        
+
+    </div>
+    <div class="card2">
+      <h2>Quick Links</h2>
+      <div class="anchor-links">
+        <a href="index.php">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.php">Contact Us</a>
+    
+
+      </div>
+      
+
+    </div>
+    <div class="card2">
+      <h2>Support</h2>
+      <div class="anchor-links">
+        <a href="contactus.php">Help Center</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+     
+      
+</div>
+      </div>
+        <div class="card2">
+      <h2>Contact Info</h2>
+      <div class="anchor-links">
+        <p><i class="fa-solid fa-phone"></i>   +91 7300368554</p>
+      <p><i class="fa-solid fa-message"></i>   support@centralacademy.com</p>
+      <p><i class="fa-solid fa-location-dot"> </i>   34 Ambabari, Jaipur, Rajasthan </p>
+      <p>302039</p>
+      
+</div>
+      </div>
+  </div>
+     <div class="footer-bottom">
+    <hr class="grey-line">
+    <br>
+  <p>© 2025 centralacademy. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+
+</html>

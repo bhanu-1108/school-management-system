@@ -1,0 +1,160 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+$username = $isLoggedIn ? $_SESSION['username'] : null;
+$position = $isLoggedIn ? $_SESSION['position'] : null;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Programs - Central Academy</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="program.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+ <header>
+        <div class="nav-bar" id="nav-items">
+            <div class="name-logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>Central<span id="car">Academy</span></h2>
+            </div>
+          <div class="items">
+    <a href="index.php">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactus.php">Contact Us</a>
+
+    <div class="signin" id="user-info">
+        <?php if ($isLoggedIn): ?>
+            <span style="font-weight:600; margin-right:10px;">
+                <?php echo htmlspecialchars($username); ?> (<?php echo htmlspecialchars($position); ?>)
+            </span>
+            <form method="post" action="logout.php" style="display:inline;">
+                <button type="submit" style="padding:6px 10px; border:none; background:#36a7f6; color:white; border-radius:6px; cursor:pointer;">
+                    Logout
+                </button>
+            </form>
+        <?php else: ?>
+            <a id="a1" href="signin.php">Sign In</a>
+            <a href="register.php" id="reg">Register</a>
+        <?php endif; ?>
+    </div>
+</div>
+
+</header>
+
+<section class="programs-hero">
+    <h1>Our Academic Programs</h1>
+    <p>Discover well-structured and modern courses designed for holistic student development.</p>
+</section>
+
+<section class="programs-section">
+
+    <div class="program-card">
+        <i class="fa-solid fa-book-open program-icon"></i>
+        <h2>Primary School (Class 1–2)</h2>
+        <p>Focus on foundational learning with interactive activities, basic subjects, and skill-building games.</p>
+    </div>
+
+    <div class="program-card">
+        <i class="fa-solid fa-graduation-cap program-icon"></i>
+        <h2>Upper Primary (Class 3–5)</h2>
+        <p>A comprehensive curriculum including science, computer education, math, languages, and social science.</p>
+    </div>
+
+    <div class="program-card">
+        <i class="fa-solid fa-laptop program-icon"></i>
+        <h2>Computer Literacy</h2>
+        <p>Students learn basic computer operations, typing, internet safety, and educational software use.</p>
+    </div>
+
+    <div class="program-card">
+        <i class="fa-solid fa-music program-icon"></i>
+        <h2>Arts, Music & Dance</h2>
+        <p>Creative programs that help students develop talents in performing arts, painting, and musical training.</p>
+    </div>
+
+    <div class="program-card">
+        <i class="fa-solid fa-dumbbell program-icon"></i>
+        <h2>Sports & Physical Education</h2>
+        <p>Well-structured sports curriculum including yoga, athletics, football, cricket, and indoor games.</p>
+    </div>
+
+    <div class="program-card">
+        <i class="fa-solid fa-users program-icon"></i>
+        <h2>Life Skills & Personality Development</h2>
+        <p>Special sessions to teach communication, teamwork, leadership, discipline, and social values.</p>
+    </div>
+
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="card1">
+      <div class="card-logo">
+                 <i class="fa-solid fa-graduation-cap"></i>
+                <h2>Central<span style="color: #36a7f6;">Academy</span></h2>
+            </div>
+          <div class="pcar">
+            <p>A place where knowledge and character grow together</p>
+          </div>
+          <div class="social-media">
+            <a href="#3"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#3"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#3"> <i class="fa-brands fa-instagram"></i></a>
+            <a href="#3"> <i class="fa-brands fa-linkedin-in"></i></a>
+            <a href=""></a>
+            
+           
+           
+            
+          </div>
+        
+
+    </div>
+    <div class="card2">
+      <h2>Quick Links</h2>
+      <div class="anchor-links">
+        <a href="index.php">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.php">Contact Us</a>
+    
+
+      </div>
+      
+
+    </div>
+    <div class="card2">
+      <h2>Support</h2>
+      <div class="anchor-links">
+        <a href="contactus.php">Help Center</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+     
+      
+</div>
+      </div>
+        <div class="card2">
+      <h2>Contact Info</h2>
+      <div class="anchor-links">
+        <p><i class="fa-solid fa-phone"></i>   +91 7300368554</p>
+      <p><i class="fa-solid fa-message"></i>   support@centralacademy.com</p>
+      <p><i class="fa-solid fa-location-dot"> </i>   34 Ambabari, Jaipur, Rajasthan </p>
+      <p>302039</p>
+      
+</div>
+      </div>
+  </div>
+     <div class="footer-bottom">
+    <hr class="grey-line">
+    <br>
+  <p>© 2025 centralacademy. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+
+</html>

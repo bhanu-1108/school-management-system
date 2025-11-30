@@ -1,0 +1,211 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+$username   = $isLoggedIn ? $_SESSION['username'] : null;
+$position   = $isLoggedIn ? $_SESSION['position'] : null;
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enter Student Marks</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="teacher_marks.css">
+
+<style>
+.container-marks {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.container-marks h2 {
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #36a7f6;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background: #007BFF;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="nav-bar">
+        <div class="name-logo">
+            <h2 onclick="window.location.href='index.php'">Central<span id="car">Academy</span></h2>
+        </div>
+    </div>
+</header>
+<div class="form-container">
+    <h2>Enter Student Marks</h2>
+
+    <label>Select Class</label>
+    <select id="classSelect">
+        <option value="">Select Class</option>
+        <option value="Class 1">Class 1</option>
+        <option value="Class 2">Class 2</option>
+        <option value="Class 3">Class 3</option>
+        <option value="Class 4">Class 4</option>
+        <option value="Class 5">Class 5</option>
+    </select>
+
+    <label>Select Student</label>
+    <select id="studentSelect">
+        <option value="">Select Student</option>
+    </select>
+
+    <label>Test Type</label>
+    <select id="testType">
+        <option>Unit Test 1</option>
+        <option>Unit Test 2</option>
+        <option>Half Yearly</option>
+        <option>Final Examination</option>
+    </select>
+
+    <h3>Enter Marks</h3>
+
+    <div class="subject-box">
+        <div class="subject-row">
+            <span>English</span>
+            <input type="number" id="eng_marks" placeholder="Marks Scored">
+            <input type="number" id="eng_total" placeholder="Total Marks">
+        </div>
+
+        <div class="subject-row">
+            <span>Hindi</span>
+            <input type="number" id="hin_marks" placeholder="Marks Scored">
+            <input type="number" id="hin_total" placeholder="Total Marks">
+        </div>
+
+        <div class="subject-row">
+            <span>Maths</span>
+            <input type="number" id="math_marks" placeholder="Marks Scored">
+            <input type="number" id="math_total" placeholder="Total Marks">
+        </div>
+
+        <div class="subject-row">
+            <span>Science</span>
+            <input type="number" id="sci_marks" placeholder="Marks Scored">
+            <input type="number" id="sci_total" placeholder="Total Marks">
+        </div>
+
+        <div class="subject-row">
+            <span>SST</span>
+            <input type="number" id="sst_marks" placeholder="Marks Scored">
+            <input type="number" id="sst_total" placeholder="Total Marks">
+        </div>
+
+        <div class="subject-row">
+            <span>GK</span>
+            <input type="number" id="gk_marks" placeholder="Marks Scored">
+            <input type="number" id="gk_total" placeholder="Total Marks">
+        </div>
+    </div>
+
+    <button id="submitMarks" class="btn">Submit Marks</button>
+</div>
+
+<script>
+
+// LOAD STUDENTS BY CLASS
+document.getElementById("classSelect").addEventListener("change", async () => {
+    let cls = classSelect.value;
+    if (!cls) return;
+
+    let res = await fetch(`backend/get_students.php?class=${cls}`);
+    let data = await res.json();
+
+    studentSelect.innerHTML = `<option value="">Select Student</option>`;
+
+    data.forEach(stu => {
+        studentSelect.innerHTML += `<option value="${stu.id}">${stu.name}</option>`;
+    });
+});
+
+// SUBMIT MARKS & REDIRECT
+document.getElementById("submitMarks").addEventListener("click", async () => {
+
+    let studentID = studentSelect.value;
+    let studentName = studentSelect.selectedOptions[0]?.text;
+    let className = classSelect.value;
+    let testTypeVal = document.getElementById("testType").value;
+
+    if (!studentID || !className) {
+        alert("Please select Class & Student");
+        return;
+    }
+
+    let fd = new FormData();
+
+    fd.append("student_id", studentID);
+    fd.append("student_name", studentName);
+    fd.append("class", className);
+    fd.append("test_type", testTypeVal);
+
+    fd.append("eng_marks", eng_marks.value);
+    fd.append("eng_total", eng_total.value);
+
+    fd.append("hin_marks", hin_marks.value);
+    fd.append("hin_total", hin_total.value);
+
+    fd.append("math_marks", math_marks.value);
+    fd.append("math_total", math_total.value);
+
+    fd.append("sci_marks", sci_marks.value);
+    fd.append("sci_total", sci_total.value);
+
+    fd.append("sst_marks", sst_marks.value);
+    fd.append("sst_total", sst_total.value);
+
+    fd.append("gk_marks", gk_marks.value);
+    fd.append("gk_total", gk_total.value);
+
+    let res = await fetch("https://schoolproject1108.fwh.is/backend/add_marks.php", {
+        method: "POST",
+        body: fd
+    });
+
+    let msg = await res.text();
+
+    if (msg.trim() === "success") {
+        alert("Marks Added Successfully!");
+        window.location.href = "teacher_homework.php"; // REDIRECT HERE
+    } else {
+        alert("ERROR: " + msg);
+    }
+});
+
+</script>
+
+
+</body>
+</html>

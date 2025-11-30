@@ -1,0 +1,64 @@
+/* ================================
+   Programs Page Styles
+================================ */
+
+.programs-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f5faff;
+    border-bottom: 3px solid #36a7f6;
+}
+
+.programs-hero h1 {
+    font-size: 36px;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.programs-hero p {
+    font-size: 18px;
+    color: #444;
+}
+
+/* Programs Grid */
+
+.programs-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.program-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.program-icon {
+    font-size: 45px;
+    color: #36a7f6;
+    margin-bottom: 15px;
+}
+
+.program-card h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.program-card p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+

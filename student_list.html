@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student List - Admin</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.admin-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.admin-container h2 {
+    color: #007BFF;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+#studentTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#studentTable th {
+    background: #36a7f6;
+    color: white;
+    padding: 12px;
+}
+
+#studentTable td {
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    background: red;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: darkred;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="nav-bar">
+        <div class="name-logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2 onclick="window.location.href='index.html'">Central<span id="car">Academy</span></h2>
+        </div>
+    </div>
+</header>
+
+<div class="admin-container">
+    <h2>All Registered Students</h2>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by name, class, or email...">
+    </div>
+
+    <table id="studentTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Class</th>
+            <th>Phone</th>
+            <th>Position</th>
+            <th>Action</th>
+        </tr>
+    </table>
+</div>
+
+<script>
+async function loadStudents(){
+    let res = await fetch("https://schoolproject123.fwh.is/backend/get_all_students.php");
+    let data = await res.json();
+
+    let table = document.getElementById("studentTable");
+
+    data.forEach(student => {
+        table.innerHTML += `
+            <tr>
+                <td>${student.id}</td>
+                <td>${student.name}</td>
+                <td>${student.email}</td>
+                <td>${student.class}</td>
+                <td>${student.phone}</td>
+                <td>${student.position}</td>
+                <td>
+                    <button class="delete-btn" onclick="deleteStudent(${student.id})">Delete</button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+async function deleteStudent(id){
+    if(!confirm("Do you really want to delete this student?")) return;
+
+    let fd = new FormData();
+    fd.append("id", id);
+
+    let res = await fetch("backend/delete_student.php", {
+        method: "POST",
+        body: fd
+    });
+
+    let msg = await res.text();
+
+    if(msg === "success"){
+        alert("Student deleted!");
+        location.reload();
+    } else {
+        alert("Error deleting student.");
+    }
+}
+
+// Search Function
+document.getElementById("searchInput").addEventListener("keyup", function(){
+    let filter = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#studentTable tr");
+
+    rows.forEach((row, index) => {
+        if(index === 0) return; // skip table header
+
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? "" : "none";
+    });
+});
+
+loadStudents();
+</script>
+
+</body>
+</html>

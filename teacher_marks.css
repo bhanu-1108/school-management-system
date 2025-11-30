@@ -1,0 +1,23 @@
+.subject-box {
+    margin-top: 15px;
+}
+
+.subject-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.subject-row span {
+    width: 120px;
+    font-weight: 600;
+}
+
+.subject-row input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 7px;
+    background: #f5f7fa;
+    border: 1px solid #ccc;
+}

@@ -1,0 +1,365 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+$username = $isLoggedIn ? $_SESSION['username'] : null;
+$position = $isLoggedIn ? $_SESSION['position'] : null;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Central Academy</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        /* PAGE CUSTOM STYLES (matches your theme) */
+
+        .about-hero {
+            width: 100%;
+            padding: 70px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.5)), url("school_banner.jpg") center/cover;
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .about-hero p {
+            font-size: 18px;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        .about-section {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .about-section h2 {
+            font-size: 30px;
+            color: #36a7f6;
+            margin-bottom: 15px;
+        }
+
+        .about-section p {
+            font-size: 17px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .principal-box {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            align-items: center;
+        }
+
+        .principal-box img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #36a7f6;
+        }
+
+        .vision-box,
+        .mission-box,
+        .values-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9fb;
+            border-radius: 12px;
+            border-left: 5px solid #36a7f6;
+        }
+
+        .facilities-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 20px;
+        }
+
+        .facility-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .facility-card i {
+            font-size: 35px;
+            color: #36a7f6;
+            margin-bottom: 10px;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-section {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 32px;
+            color: #36a7f6;
+        }
+
+        .gallery-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+            gap: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            border-radius: 14px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR (same as home) -->
+<header>
+    <div class="nav-bar" id="nav-items">
+        <div class="name-logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>Central<span id="car">Academy</span></h2>
+        </div>
+
+        <div class="items">
+            <a href="index.php">Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contactus.php">Contact Us</a>
+
+            <div class="signin" id="user-info" style="display:flex;align-items:center;gap:10px;">
+
+    <?php if ($isLoggedIn): ?>
+        
+        <!-- Show username + role -->
+        <span style="font-weight:600; font-size:16px;">
+            <?php echo htmlspecialchars($username); ?>
+            <span style="color:#2a72f9;">(<?php echo htmlspecialchars($position); ?>)</span>
+        </span>
+
+        <!-- Logout button -->
+        <form action="logout.php" method="POST" style="display:inline;">
+            <button 
+                type="submit"
+                style="
+                    padding:6px 14px;
+                    background:#2a72f9;
+                    border:none;
+                    border-radius:6px;
+                    color:white;
+                    cursor:pointer;
+                    font-size:14px;
+                "
+            >Logout</button>
+        </form>
+
+    <?php else: ?>
+
+        <!-- Normal "Sign In / Register" -->
+        <a id="a1" href="signin.php" 
+           style="padding:6px 12px; color:black;">Sign In</a>
+
+        <a id="reg" href="register.php"
+           style="
+                padding:6px 12px;
+                background:#2a72f9;
+                color:white;
+                border-radius:6px;
+           "
+        >Register</a>
+
+    <?php endif; ?>
+
+</div>
+
+        </div>
+    </div>
+</header>
+
+<!-- ✅ HERO SECTION -->
+<div class="about-hero">
+    <h1>About Central Academy</h1>
+    <p>Shaping Minds. Building Futures. Inspiring Generations.</p>
+</div>
+
+<!-- ✅ SCHOOL INTRO -->
+<div class="about-section">
+    <h2>Our Story</h2>
+    <p>
+        Founded in 1990, Central Academy has grown into one of the region’s most respected institutions. 
+        With a strong commitment to academic excellence, character development, and holistic learning, 
+        the school has been shaping bright futures for more than three decades.
+    </p>
+
+    <p>
+        Our vision is to provide education that empowers students to think, innovate, and lead. 
+        With world-class faculty, modern infrastructure, and an inclusive environment, 
+        Central Academy is dedicated to nurturing confident, responsible global citizens.
+    </p>
+</div>
+
+<!-- ✅ PRINCIPAL MESSAGE -->
+<div class="about-section">
+    <h2>Message from the Principal</h2>
+
+    <div class="principal-box">
+        <img src="photos/principle.jpg" alt="Principal">
+
+        <p>
+            “At Central Academy, we believe education goes far beyond the classroom. 
+            We focus on developing values, discipline, creativity, and critical thinking. 
+            Our goal is to ensure every student receives the best guidance, support, and opportunities 
+            to realize their true potential.”
+        </p>
+    </div>
+</div>
+
+<!-- ✅ VISION & MISSION -->
+<div class="about-section">
+    <div class="vision-box">
+        <h3>Our Vision</h3>
+        <p>
+            To inspire young minds to be innovative thinkers, compassionate individuals, 
+            and responsible global leaders.
+        </p>
+    </div>
+
+    <div class="mission-box">
+        <h3>Our Mission</h3>
+        <p>
+            To provide high-quality education through a balanced curriculum, experienced educators, 
+            modern technology, and a safe, inclusive environment where every learner thrives.
+        </p>
+    </div>
+
+    <div class="values-box">
+        <h3>Our Core Values</h3>
+        <p>
+            Integrity • Discipline • Respect • Innovation • Excellence • Compassion
+        </p>
+    </div>
+</div>
+
+<!-- ✅ FACILITIES -->
+<div class="about-section">
+    <h2>School Facilities</h2>
+
+    <div class="facilities-grid">
+
+        <div class="facility-card">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <h3>Smart Classrooms</h3>
+            <p>Interactive digital classrooms for modern learning.</p>
+        </div>
+
+        <div class="facility-card">
+            <i class="fa-solid fa-book"></i>
+            <h3>Library</h3>
+            <p>Thousands of books, journals, and digital resources.</p>
+        </div>
+
+        <div class="facility-card">
+            <i class="fa-solid fa-flask"></i>
+            <h3>Science Labs</h3>
+            <p>Fully equipped Physics, Chemistry, and Biology labs.</p>
+        </div>
+
+        <div class="facility-card">
+            <i class="fa-solid fa-futbol"></i>
+            <h3>Sports</h3>
+            <p>Dedicated grounds for football, cricket, basketball & athletics.</p>
+        </div>
+
+        <div class="facility-card">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h3>Computer Lab</h3>
+            <p>High-performance systems for coding & digital learning.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- ✅ GALLERY SECTION -->
+<div class="gallery-section">
+    <h2>Moments to Remember</h2>
+
+    <div class="gallery-grid">
+        <img src="photos/img1.jpg">
+        <img src="photos/img2.jpg">
+        <img src="photos/img3.jpg">
+        <img src="photos/img4.jpg">
+    </div>
+</div>
+
+<!-- ✅ FOOTER -->
+<footer>
+    <div class="footer-container">
+
+        <div class="card1">
+            <div class="card-logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>Central<span style="color:#36a7f6;">Academy</span></h2>
+            </div>
+            <p>A place where knowledge and character grow together</p>
+        </div>
+
+        <div class="card2">
+            <h2>Quick Links</h2>
+            <div class="anchor-links">
+                <a href="index.php">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="contactus.php">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="card2">
+            <h2>Support</h2>
+            <div class="anchor-links">
+                <a href="contactus.php">Help Center</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+
+        <div class="card2">
+            <h2>Contact Info</h2>
+            <div class="anchor-links">
+                <p><i class="fa-solid fa-phone"></i> +91 7300368554</p>
+                <p><i class="fa-solid fa-message"></i> support@centralacademy.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan</p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+
+</html>
