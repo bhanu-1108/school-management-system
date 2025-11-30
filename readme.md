@@ -58,7 +58,7 @@ This project supports **Student & Teacher authentication**, **homework upload**,
 ---
 ## 🎥 Project Demo
 
-[![Project Demo Video](https://youtu.be/khv9MA3rJ50)
+[![Project Demo Video] https://youtu.be/khv9MA3rJ50
 ---
 
 ## 🛠️ **Tech Stack**
